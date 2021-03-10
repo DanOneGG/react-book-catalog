@@ -1,0 +1,16 @@
+.question-type {
+  display: flex;
+  text-align: center;
+  height: 40px;
+  padding: 0 32px 0 16px;
+  line-height: 40px;
+  white-space: nowrap;
+  cursor: pointer;
+  border-radius: 3px;
+  border: 1px solid transparent;
+
+  &:hover {
+    border: 1px solid rgba(0, 0, 0, .05);
+    background: #fff;
+  }
+}

@@ -5,4 +5,11 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #f9f9f9;
+}
+
+.b-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

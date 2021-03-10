@@ -1,0 +1,32 @@
+.footer {
+  width: 100%;
+  margin-top: 50px;
+
+  &__row {
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 52px;
+    font-size: 14px;
+    border-top: 1px solid rgba(0,0,0,.1);
+    background-color: inherit;
+    padding: 0 32px;
+
+    &>* {
+      margin: 0 12px;
+    }
+  }
+
+  &__link {
+    cursor: pointer;
+
+    &:hover {
+      color: red;
+    }
+  }
+
+  &__space {
+    flex: 1;
+  }
+}
