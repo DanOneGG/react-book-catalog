@@ -1,23 +1,25 @@
-import block from 'bem-cn'
-import React from 'react'
-import './Button.css'
+import block from "bem-cn";
+import React from "react";
+import "./Button.css";
 
 interface Props {
-  text: string,
-  // onClick: R
-  outlined?: boolean
+  text: string;
+  onClick: React.MouseEventHandler<HTMLButtonElement>;
+  outlined?: boolean;
 }
 
-const b = block('button')
+const b = block("button");
 
-export const Button: React.FC<Props> = ({text, outlined = false}) => {
-  let className: string = b()
+export const Button: React.FC<Props> = ({ text, onClick, outlined = false }) => {
+  let className: string = b();
 
   if (outlined) {
-    className = `${className}  ${b('outlined')}`
+    className = b({ outlined });
   }
 
-  return (<button className={className}>
-    {text}
-  </button>)
-}
+  return (
+    <button className={className} onClick={onClick}>
+      {text}
+    </button>
+  );
+};

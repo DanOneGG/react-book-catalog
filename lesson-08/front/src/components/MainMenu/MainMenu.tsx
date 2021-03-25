@@ -1,11 +1,10 @@
-import block from 'bem-cn'
-import React from 'react'
-import './MainMenu.css'
+import block from "bem-cn";
+import React from "react";
+import "./MainMenu.css";
 
-interface Props {
-}
+interface Props {}
 
-const b = block('main-menu')
+const b = block("main-menu");
 
 export const MainMenu: React.FC<Props> = () => {
   return (
@@ -13,5 +12,5 @@ export const MainMenu: React.FC<Props> = () => {
       <a href="/catalog">Каталог</a>
       <a href="/ref">Справочники</a>
     </nav>
-  )
-}
+  );
+};

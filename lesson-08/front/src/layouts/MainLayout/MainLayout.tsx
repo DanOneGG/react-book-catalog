@@ -1,22 +1,20 @@
-import block from 'bem-cn'
-import React from 'react'
-import { Header } from '../../components/Header/Header'
-import { MainMenu } from '../../components/MainMenu/MainMenu'
-import './MainLayout.css'
+import block from "bem-cn";
+import React from "react";
+import { Header } from "../../components/Header/Header";
+import { MainMenu } from "../../components/MainMenu/MainMenu";
+import "./MainLayout.css";
 
-interface Props {
-}
+interface Props {}
 
-const b = block('main-layout')
+const b = block("main-layout");
 
 export const MainLayout: React.FC<Props> = (props) => {
   return (
     <div className={b()}>
-      <Header />
-      <MainMenu />
-      <main className={b('main')}>
-        {props.children}
-      </main>
+      <Header>
+        <MainMenu />
+      </Header>
+      <main className={b("main")}>{props.children}</main>
     </div>
-  )
-}
+  );
+};
