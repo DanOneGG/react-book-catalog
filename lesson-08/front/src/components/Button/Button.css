@@ -1,0 +1,29 @@
+.button {
+  cursor: pointer;
+  color: white;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  background: rgba(255, 102, 0, 0.7);
+  margin-top: 10px;
+  height: 40px;
+  font-size: 16px;
+  transition: background 0.15s linear;
+
+  &:hover {
+    color: dimgrey;
+    background: rgba(255, 102, 0, 0.4);
+  }
+
+  &_outlined {
+    color: dimgrey;
+    background: none;
+    border: 1px solid rgba(0.5, 0.5, 0.5, 0.1);
+
+    &:hover {
+      color: #f60;
+      border: 1px solid transparent;
+      background: rgba(255, 102, 0, 0.1);
+    }
+  }
+}
