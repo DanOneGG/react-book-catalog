@@ -1,18 +1,15 @@
-import block from 'bem-cn'
-import React from 'react'
-import './Header.css'
+import block from "bem-cn";
+import React from "react";
+import "./Header.css";
 
-interface Props {
-}
+interface Props {}
 
-const b = block('header')
+const b = block("header");
 
 export const Header: React.FC<Props> = () => (
   <header className={b()}>
-    <a className={b('title')}
-      href={'/'}
-    >
+    <a className={b("title")} href={"/"}>
       Catalog
     </a>
   </header>
-)
+);
