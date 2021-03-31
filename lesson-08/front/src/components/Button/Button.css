@@ -4,15 +4,14 @@
   border-radius: 5px;
   border: none;
   outline: none;
-  background: rgba(255, 102, 0, 0.7);
-  margin-top: 10px;
+  background: rgba(240, 75, 0, 0.7);
+  margin-top: 5px;
   height: 40px;
   font-size: 16px;
-  transition: background 0.15s linear;
+  transition: background 0.05s linear, color 0.1s linear;
 
   &:hover {
-    color: dimgrey;
-    background: rgba(255, 102, 0, 0.4);
+    background: rgba(240, 75, 0, 0.6);
   }
 
   &_outlined {
@@ -23,7 +22,7 @@
     &:hover {
       color: #f60;
       border: 1px solid transparent;
-      background: rgba(255, 102, 0, 0.1);
+      background: rgba(240, 75, 0, 0.1);
     }
   }
 }
