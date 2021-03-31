@@ -11,8 +11,9 @@ const b = block("main-layout");
 export const MainLayout: React.FC<Props> = (props) => {
   return (
     <div className={b()}>
-      <Header />
-      <MainMenu />
+      <Header>
+        <MainMenu />
+      </Header>
       <main className={b("main")}>{props.children}</main>
     </div>
   );

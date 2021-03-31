@@ -1,2 +1,13 @@
 .main-menu {
+  & a {
+    color: white;
+    text-decoration: none;
+    margin-right: 10px;
+    font-size: 1em;
+    transition: color 0.05s linear;
+
+    &:hover {
+      color: #f60;
+    }
+  }
 }
