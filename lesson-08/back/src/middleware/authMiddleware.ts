@@ -11,9 +11,6 @@ const authService = container.resolve<Auth.Service>(Service.Auth)
 const userRepository = container.resolve<User.Repository>(Repository.User)
 
 export const authMiddleware: App.Action = async (req, res, next) => {
-  next()
-  return
-
   const error = new UnauthorizedError()
 
   const token: string = (req.header('Authorization') || '').replace(/^Bearer\s/, '')

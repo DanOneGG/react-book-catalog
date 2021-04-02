@@ -8,8 +8,10 @@ interface Props {}
 
 export const App: React.FC<Props> = () => (
   <Provider store={store}>
-    <BrowserRouter>
-      <Routes />
-    </BrowserRouter>
+    <PersistGate persistor={persistor}>
+      <BrowserRouter>
+        <Routes />
+      </BrowserRouter>
+    </PersistGate>
   </Provider>
 );
