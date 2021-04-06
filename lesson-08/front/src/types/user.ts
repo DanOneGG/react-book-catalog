@@ -1,6 +1,6 @@
 export declare namespace User {
   namespace Create {
-    interface Param {
+    interface Params {
       login: string;
       email: string;
       password: string;

@@ -1,17 +1,16 @@
 import block from "bem-cn";
 import React from "react";
-import "./AuthForm.css";
+import "./RegisterForm.css";
 import * as Yup from "yup";
 import { Input } from "../../Input/Input";
 import { Button } from "../../Button/Button";
-import { Auth } from "../../../types/auth";
 import { AppState } from "../../../store/app/types";
 import { InputType } from "../../Input/InputType";
 import { connect, MapDispatchToProps, MapStateToProps } from "react-redux";
 import { RootState } from "../../../store/types";
 import { appActions } from "../../../store/app/actions";
 import { useFormik } from "formik";
-import { browserHistory } from "../../../browserHistory";
+import { User } from "../../../types/user";
 
 interface StateProps {
   loading: boolean;
@@ -24,22 +23,26 @@ interface OwnProps {}
 
 type Props = OwnProps & StateProps & DispatchProps;
 
-const b = block("auth-form");
+const b = block("register-form");
 
-const schema: Yup.SchemaOf<Auth.Login.Params> = Yup.object().shape({
+const schema: Yup.SchemaOf<User.Create.Params> = Yup.object().shape({
   login: Yup.string().required(),
+  email: Yup.string().required().email(),
   password: Yup.string().required(),
+  passwordConfirm: Yup.string().required(),
 });
 
-const AuthFormPresenter: React.FC<Props> = ({ loading, errorText, appLogin }) => {
-  const { errors, values, submitForm, handleChange } = useFormik<Auth.Login.Params>({
+const RegisterFormPresenter: React.FC<Props> = ({ loading, errorText, appRegister }) => {
+  const { errors, values, submitForm, handleChange } = useFormik<User.Create.Params>({
     initialValues: {
       login: "",
+      email: "",
       password: "",
+      passwordConfirm: "",
     },
     validationSchema: schema,
     onSubmit: async (fields) => {
-      await appLogin(fields);
+      await appRegister(fields);
     },
   });
 
@@ -50,7 +53,7 @@ const AuthFormPresenter: React.FC<Props> = ({ loading, errorText, appLogin }) =>
 
   return (
     <form className={b()}>
-      <h1 className={b("title")}>Авторизация</h1>
+      <h1 className={b("title")}>Регистрация</h1>
       <h2 className={b("subtitle")}>Логин</h2>
       <Input
         className={b("field")}
@@ -59,6 +62,16 @@ const AuthFormPresenter: React.FC<Props> = ({ loading, errorText, appLogin }) =>
         value={values.login}
         onChange={handleChange}
         error={errors?.login}
+        disabled={loading}
+      />
+      <h2 className={b("subtitle")}>Почта</h2>
+      <Input
+        className={b("field")}
+        label={"Почта"}
+        name={"email"}
+        value={values.email}
+        onChange={handleChange}
+        error={errors?.email}
         disabled={loading}
       />
       <h2 className={b("subtitle")}>Пароль</h2>
@@ -72,14 +85,19 @@ const AuthFormPresenter: React.FC<Props> = ({ loading, errorText, appLogin }) =>
         error={errors?.password}
         disabled={loading}
       />
-      {!!errorText && <p className={b("error")}>{errorText}</p>}
-      <Button text="Войти" onClick={handlerSubmit} disabled={loading} />
-      <Button
-        outlined
-        text="Зарегистрироваться"
-        onClick={() => browserHistory.push("/registration")}
+      <h2 className={b("subtitle")}>Подтвердите пароль</h2>
+      <Input
+        className={b("field")}
+        label={"Пароль"}
+        name={"passwordConfirm"}
+        htmlType={InputType.Password}
+        value={values.passwordConfirm}
+        onChange={handleChange}
+        error={errors?.passwordConfirm}
         disabled={loading}
       />
+      {!!errorText && <p className={b("error")}>{errorText}</p>}
+      <Button text="Зарегистрироваться" onClick={handlerSubmit} disabled={loading} />
     </form>
   );
 };
@@ -91,4 +109,4 @@ const mapStateToProps: MapStateToProps<StateProps, OwnProps, RootState.State> = 
 
 const mapDispatchToProp: MapDispatchToProps<DispatchProps, OwnProps> = { ...appActions };
 
-export const AuthForm = connect(mapStateToProps, mapDispatchToProp)(AuthFormPresenter);
+export const RegisterForm = connect(mapStateToProps, mapDispatchToProp)(RegisterFormPresenter);

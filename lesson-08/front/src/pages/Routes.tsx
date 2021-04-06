@@ -11,6 +11,7 @@ import { PublishersPage } from "./PublishersPage/PublishersPage";
 import { LanguagesPage } from "./LanguagesPage/LanguagesPage";
 import { GenresPage } from "./GenresPage/GenresPage";
 import { RefPage } from "./RefPage/RefPage";
+import { RegisterPage } from "./RegisterPage/RegisterPage";
 
 interface Props {}
 
@@ -18,15 +19,16 @@ export const Routes: React.FC<Props> = () => {
   return (
     <Switch>
       <Redirect exact from={"/"} to={"/catalog"} />
-      <Page path={"/auth"} layout={AuthLayout} component={AuthPage} />
-      <Page secured path={"/catalog"} component={CatalogPage} />
-      <Page exact secured path={"/ref"} component={RefPage} />
-      <Page secured path={"/ref/authors"} component={AuthorsPage} />
-      <Page secured path={"/ref/genres"} component={GenresPage} />
-      <Page secured path={"/ref/languages"} component={LanguagesPage} />
-      <Page secured path={"/ref/publishers"} component={PublishersPage} />
-      <Page secured path={"/about"} component={AboutPage} />
-      <Page path={"*"} layout={AuthLayout} component={Error404} />
+      <Page unsecured path={"/auth"} layout={AuthLayout} component={AuthPage} />
+      <Page unsecured path={"/registration"} layout={AuthLayout} component={RegisterPage} />
+      <Page path={"/catalog"} component={CatalogPage} />
+      <Page exact path={"/ref"} component={RefPage} />
+      <Page path={"/ref/authors"} component={AuthorsPage} />
+      <Page path={"/ref/genres"} component={GenresPage} />
+      <Page path={"/ref/languages"} component={LanguagesPage} />
+      <Page path={"/ref/publishers"} component={PublishersPage} />
+      <Page path={"/about"} component={AboutPage} />
+      <Page unsecured path={"*"} layout={AuthLayout} component={Error404} />
     </Switch>
   );
 };
