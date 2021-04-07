@@ -1,2 +1,5 @@
 .auth-layout {
+  &__main {
+    padding-top: 32px;
+  }
 }

@@ -30,6 +30,15 @@ export const appReducer: Reducer<AppState.State, AppState.Action.All> = (state =
         loading: false,
         errorText: action.payload,
       };
+    case AppAction.ClearError:
+      return {
+        ...initState,
+        errorText: ''
+      }
+    case AppAction.Clear:
+      return {
+        ...initState
+      }
     default:
       return state;
   }
