@@ -4,35 +4,34 @@ import "./RegisterForm.css";
 import * as Yup from "yup";
 import { Input } from "../../Input/Input";
 import { Button } from "../../Button/Button";
-import { AppState } from "../../../store/app/types";
 import { InputType } from "../../Input/InputType";
 import { connect, MapDispatchToProps, MapStateToProps } from "react-redux";
 import { RootState } from "../../../store/types";
 import { appActions } from "../../../store/app/actions";
 import { useFormik } from "formik";
 import { User } from "../../../types/user";
+import { browserHistory } from "../../../browserHistory";
+import { apiUserCreate } from "../../../api/user";
+import { ButtonType } from "../../Button/ButtonType";
 
-interface StateProps {
-  loading: boolean;
-  errorText: string;
+interface Props {
 }
-
-interface DispatchProps extends AppState.ActionThunk {}
-
-interface OwnProps {}
-
-type Props = OwnProps & StateProps & DispatchProps;
 
 const b = block("register-form");
 
 const schema: Yup.SchemaOf<User.Create.Params> = Yup.object().shape({
-  login: Yup.string().required(),
-  email: Yup.string().required().email(),
-  password: Yup.string().required(),
-  passwordConfirm: Yup.string().required(),
+  login: Yup.string().required("Обязательное"),
+  email: Yup.string().required("Обязательное").email("Неверный email"),
+  password: Yup.string().required("Обязательное"),
+  passwordConfirm: Yup.string()
+    .required("Обязательное")
+    .test("match", "Пароли не совпадают", (value, context) => value === context.parent.password),
 });
 
-const RegisterFormPresenter: React.FC<Props> = ({ loading, errorText, appRegister }) => {
+export const RegisterForm: React.FC<Props> = () => {
+  const [loading, setLoading] = React.useState<boolean>(false);
+  const [errorText, setErrorText] = React.useState<string>("");
+
   const { errors, values, submitForm, handleChange } = useFormik<User.Create.Params>({
     initialValues: {
       login: "",
@@ -42,7 +41,15 @@ const RegisterFormPresenter: React.FC<Props> = ({ loading, errorText, appRegiste
     },
     validationSchema: schema,
     onSubmit: async (fields) => {
-      await appRegister(fields);
+      try {
+        setLoading(true);
+        await apiUserCreate(fields);
+        browserHistory.push("/auth");
+      } catch (err) {
+        setErrorText(err.message);
+      } finally {
+        setLoading(false);
+      }
     },
   });
 
@@ -97,16 +104,9 @@ const RegisterFormPresenter: React.FC<Props> = ({ loading, errorText, appRegiste
         disabled={loading}
       />
       {!!errorText && <p className={b("error")}>{errorText}</p>}
-      <Button text="Зарегистрироваться" onClick={handlerSubmit} disabled={loading} />
+      <Button onClick={handlerSubmit} disabled={loading} type={ButtonType.Primary}>
+        Зарегистрироваться
+      </Button>
     </form>
   );
 };
-
-const mapStateToProps: MapStateToProps<StateProps, OwnProps, RootState.State> = ({ app }) => ({
-  loading: app.loading,
-  errorText: app.errorText,
-});
-
-const mapDispatchToProp: MapDispatchToProps<DispatchProps, OwnProps> = { ...appActions };
-
-export const RegisterForm = connect(mapStateToProps, mapDispatchToProp)(RegisterFormPresenter);

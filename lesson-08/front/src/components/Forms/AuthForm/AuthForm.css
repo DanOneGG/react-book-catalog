@@ -8,10 +8,11 @@
     font-size: 20px;
     text-align: center;
     font-weight: 400;
+    margin-bottom: 20px;
   }
 
   &__subtitle {
-    margin-bottom: 10px;
+    margin: 12px 0;
     color: dimgrey;
     font-size: 18px;
     font-weight: 400;
@@ -19,12 +20,12 @@
 
   &__field {
     &:last-of-type {
-      margin-bottom: 10px;
+      margin-bottom: 12px;
     }
   }
 
   &__error {
-    margin: 10px 0;
+    margin: 8px 0;
     color: dimgrey;
   }
 }

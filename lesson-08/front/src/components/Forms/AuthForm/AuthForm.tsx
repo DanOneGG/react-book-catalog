@@ -1,5 +1,5 @@
 import block from "bem-cn";
-import React from "react";
+import React, { ChangeEventHandler, MouseEventHandler, useEffect, useRef } from "react";
 import "./AuthForm.css";
 import * as Yup from "yup";
 import { Input } from "../../Input/Input";
@@ -12,6 +12,7 @@ import { RootState } from "../../../store/types";
 import { appActions } from "../../../store/app/actions";
 import { useFormik } from "formik";
 import { browserHistory } from "../../../browserHistory";
+import { ButtonType } from "../../Button/ButtonType";
 
 interface StateProps {
   loading: boolean;
@@ -31,7 +32,10 @@ const schema: Yup.SchemaOf<Auth.Login.Params> = Yup.object().shape({
   password: Yup.string().required(),
 });
 
-const AuthFormPresenter: React.FC<Props> = ({ loading, errorText, appLogin }) => {
+const AuthFormPresenter: React.FC<Props> = ({ loading, errorText, appLogin, clearError }) => {
+  const refLogin = useRef<HTMLInputElement>(null);
+  const refPassword = useRef<HTMLInputElement>(null);
+
   const { errors, values, submitForm, handleChange } = useFormik<Auth.Login.Params>({
     initialValues: {
       login: "",
@@ -43,43 +47,55 @@ const AuthFormPresenter: React.FC<Props> = ({ loading, errorText, appLogin }) =>
     },
   });
 
-  const handlerSubmit: React.MouseEventHandler<HTMLButtonElement> = (event) => {
+  const handlerFieldChange: ChangeEventHandler<HTMLInputElement> = (event) => {
+    handleChange(event);
+    clearError();
+  };
+
+  const handlerSubmit: MouseEventHandler<HTMLButtonElement> = (event) => {
     event.preventDefault();
     submitForm().catch();
   };
+
+  useEffect(() => {
+    refLogin?.current?.focus();
+  }, []);
 
   return (
     <form className={b()}>
       <h1 className={b("title")}>Авторизация</h1>
       <h2 className={b("subtitle")}>Логин</h2>
       <Input
+        ref={refLogin}
         className={b("field")}
         label={"Имя"}
         name={"login"}
         value={values.login}
-        onChange={handleChange}
+        onChange={handlerFieldChange}
+        onPressEnter={() => refPassword?.current?.focus()}
         error={errors?.login}
         disabled={loading}
       />
       <h2 className={b("subtitle")}>Пароль</h2>
       <Input
+        ref={refPassword}
         className={b("field")}
         label={"Пароль"}
         name={"password"}
         htmlType={InputType.Password}
         value={values.password}
-        onChange={handleChange}
+        onChange={handlerFieldChange}
+        onPressEnter={submitForm}
         error={errors?.password}
         disabled={loading}
       />
       {!!errorText && <p className={b("error")}>{errorText}</p>}
-      <Button text="Войти" onClick={handlerSubmit} disabled={loading} />
-      <Button
-        outlined
-        text="Зарегистрироваться"
-        onClick={() => browserHistory.push("/registration")}
-        disabled={loading}
-      />
+      <Button onClick={handlerSubmit} disabled={loading}>
+        Войти
+      </Button>
+      <Button type={ButtonType.Secondary} onClick={() => browserHistory.push("/registration")} disabled={loading}>
+        Зарегистрироваться
+      </Button>
     </form>
   );
 };

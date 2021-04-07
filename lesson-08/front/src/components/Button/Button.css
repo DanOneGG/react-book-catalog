@@ -1,11 +1,11 @@
 .button {
   cursor: pointer;
   color: white;
-  border-radius: 5px;
+  border-radius: 8px;
   border: none;
   outline: none;
   background: rgba(240, 75, 0, 0.7);
-  margin-top: 5px;
+  margin-top: 4px;
   height: 40px;
   font-size: 16px;
   transition: background 0.05s linear, color 0.1s linear;
@@ -14,7 +14,7 @@
     background: rgba(240, 75, 0, 0.6);
   }
 
-  &_outlined {
+  &_secondary {
     color: dimgrey;
     background: none;
     border: 1px solid rgba(0.5, 0.5, 0.5, 0.1);
@@ -23,6 +23,18 @@
       color: #f60;
       border: 1px solid transparent;
       background: rgba(240, 75, 0, 0.1);
+    }
+  }
+
+  &_link {
+    color: dimgrey;
+    background: none;
+    transition: color 0.05s linear;
+    text-decoration: underline;
+
+    &:hover {
+      color: #f60;
+      background: none;
     }
   }
 }
