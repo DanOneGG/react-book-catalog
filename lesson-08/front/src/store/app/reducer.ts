@@ -32,7 +32,7 @@ export const appReducer: Reducer<AppState.State, AppState.Action.All> = (state =
       };
     case AppAction.ClearError:
       return {
-        ...initState,
+        ...state,
         errorText: "",
       };
     case AppAction.Clear:

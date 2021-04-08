@@ -18,7 +18,6 @@ export class Select<T> extends React.Component<Props<T>> {
 
   render() {
     const { className, data, renderLabel, renderValue } = this.props;
-    debugger;
 
     return (
       <select className={b({}).mix(className)}>
