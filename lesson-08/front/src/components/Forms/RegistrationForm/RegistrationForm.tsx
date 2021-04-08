@@ -1,6 +1,6 @@
 import block from "bem-cn";
 import React from "react";
-import "./RegisterForm.css";
+import "./RegistrationForm.css";
 import * as Yup from "yup";
 import { Input } from "../../Input/Input";
 import { Button } from "../../Button/Button";
@@ -27,7 +27,7 @@ const schema: Yup.SchemaOf<User.Create.Params> = Yup.object().shape({
     .test("match", "Пароли не совпадают", (value, context) => value === context.parent.password),
 });
 
-export const RegisterForm: React.FC<Props> = () => {
+export const RegistrationForm: React.FC<Props> = () => {
   const [loading, setLoading] = React.useState<boolean>(false);
   const [errorText, setErrorText] = React.useState<string>("");
 

@@ -3,7 +3,6 @@ import { AppAction } from "./appAction";
 import { Action as ActionRedux } from "redux";
 import { Auth } from "../../types/auth";
 import { Thunk } from "../../types/base";
-import { User } from "../../types/user";
 
 export declare namespace AppState {
   interface State {
@@ -25,7 +24,6 @@ export declare namespace AppState {
 
   interface ActionThunk {
     appLogin: Thunk<Auth.Login.Params>;
-    appRegister: Thunk<User.Create.Params>;
     clearError: Thunk;
     clear: Thunk;
   }

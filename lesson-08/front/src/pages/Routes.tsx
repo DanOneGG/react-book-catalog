@@ -11,7 +11,7 @@ import { PublishersPage } from "./PublishersPage/PublishersPage";
 import { LanguagesPage } from "./LanguagesPage/LanguagesPage";
 import { GenresPage } from "./GenresPage/GenresPage";
 import { RefPage } from "./RefPage/RefPage";
-import { RegisterPage } from "./RegisterPage/RegisterPage";
+import { RegistrationPage } from "./RegistrationPage/RegistrationPage";
 
 interface Props {}
 
@@ -20,7 +20,7 @@ export const Routes: React.FC<Props> = () => {
     <Switch>
       <Redirect exact from={"/"} to={"/catalog"} />
       <Page unsecured onlyPublic path={"/auth"} layout={AuthLayout} component={AuthPage} />
-      <Page unsecured onlyPublic path={"/registration"} layout={AuthLayout} component={RegisterPage} />
+      <Page unsecured onlyPublic path={"/registration"} layout={AuthLayout} component={RegistrationPage} />
       <Page path={"/catalog"} component={CatalogPage} />
       <Page exact path={"/ref"} component={RefPage} />
       <Page path={"/ref/authors"} component={AuthorsPage} />

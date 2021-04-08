@@ -39,18 +39,6 @@ export const appActions: AppState.ActionThunk = {
       dispatch(appFetchError(err.message));
     }
   },
-  appRegister: (params) => async (dispatch) => {
-    dispatch(appFetch());
-
-    try {
-      await apiUserCreate(params);
-      const tokenPair = await apiAuthLogin({ login: params.login, password: params.password });
-      dispatch(appFetchSuccess(tokenPair));
-      browserHistory.push("/");
-    } catch (err) {
-      dispatch(appFetchError("Ошибка регистрации."));
-    }
-  },
   clearError: () => (dispatch, getState) => {
     const { errorText } = getState().app;
     if (errorText !== "") {
