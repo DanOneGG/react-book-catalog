@@ -3,7 +3,6 @@ import { AppAction } from "./appAction";
 import { AppState } from "./types";
 import { apiAuthLogin, apiAuthLogout } from "../../api/auth";
 import { browserHistory } from "../../browserHistory";
-import { apiUserCreate } from "../../api/user";
 
 const appFetch = (): AppState.Action.Fetch => ({
   type: AppAction.Fetch,
