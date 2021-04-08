@@ -14,11 +14,11 @@ export declare namespace AppState {
   }
 
   namespace Action {
-    type Fetch = ActionRedux<AppAction.Fetch>
+    type Fetch = ActionRedux<AppAction.Fetch>;
     type FetchSuccess = ActionRedux<AppAction.FetchSuccess> & { payload: App.Token };
     type FetchError = ActionRedux<AppAction.FetchError> & { payload: string };
-    type ClearError = ActionRedux<AppAction.ClearError>
-    type Clear = ActionRedux<AppAction.Clear>
+    type ClearError = ActionRedux<AppAction.ClearError>;
+    type Clear = ActionRedux<AppAction.Clear>;
 
     type All = Fetch | FetchSuccess | FetchError | ClearError | Clear;
   }
@@ -26,7 +26,7 @@ export declare namespace AppState {
   interface ActionThunk {
     appLogin: Thunk<Auth.Login.Params>;
     appRegister: Thunk<User.Create.Params>;
-    clearError: Thunk,
-    clear: Thunk
+    clearError: Thunk;
+    clear: Thunk;
   }
 }

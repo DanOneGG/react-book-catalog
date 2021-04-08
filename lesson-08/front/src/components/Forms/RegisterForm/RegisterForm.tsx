@@ -14,8 +14,7 @@ import { browserHistory } from "../../../browserHistory";
 import { apiUserCreate } from "../../../api/user";
 import { ButtonType } from "../../Button/ButtonType";
 
-interface Props {
-}
+interface Props {}
 
 const b = block("register-form");
 

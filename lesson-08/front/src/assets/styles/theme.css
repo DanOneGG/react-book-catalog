@@ -41,7 +41,6 @@
   --button-secondary-active-bg: transparent;
   --button-secondary-active-text: var(--color-1f);
 
-
   /* Button link */
   --button-link-text: var(--color-4c);
   --button-link-disabled-text: var(--inactive);

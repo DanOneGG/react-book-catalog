@@ -30,8 +30,7 @@ const PagePresenter: React.FC<Props> = ({
   isAuth,
 }) => {
   if (onlyPublic && isAuth) {
-    return <Redirect to={'/'} />
-
+    return <Redirect to={"/"} />;
   }
 
   if (!unsecured && !isAuth) {

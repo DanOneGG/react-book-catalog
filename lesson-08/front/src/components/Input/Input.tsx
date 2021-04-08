@@ -1,5 +1,5 @@
 import block from "bem-cn";
-import React, {ChangeEventHandler, FocusEventHandler, KeyboardEventHandler, useState} from "react";
+import React, { ChangeEventHandler, FocusEventHandler, KeyboardEventHandler, useState } from "react";
 import "./Input.css";
 import { emptyFunction } from "../../utils";
 import { InputType } from "./InputType";
