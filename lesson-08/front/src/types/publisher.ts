@@ -3,4 +3,10 @@ export declare namespace Publisher {
     id: number;
     name: string;
   }
+
+  namespace All {
+    interface Search {
+      search?: string;
+    }
+  }
 }

@@ -1,12 +1,12 @@
 import block from "bem-cn";
 import React from "react";
-import "./GenresPage.css";
+import "./GenreAllPage.css";
 
 interface Props {}
 
-const b = block("genres-page");
+const b = block("genre-all-page");
 
-export const GenresPage: React.FC<Props> = () => {
+export const GenreAllPage: React.FC<Props> = () => {
   return (
     <div className={b()}>
       <h1>Жанры</h1>

@@ -8,10 +8,11 @@ import { MainMenu } from "../../components/MainMenu/MainMenu";
 import { appActions } from "../../store/app/actions";
 import { AppState } from "../../store/app/types";
 import "./MainLayout.css";
+import {BaseLayoutProps} from "../../types/base";
 
 interface DispatchProps extends AppState.ActionThunk {}
 
-interface OwnProps {}
+interface OwnProps extends BaseLayoutProps {}
 
 type Props = OwnProps & DispatchProps;
 

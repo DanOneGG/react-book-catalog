@@ -3,7 +3,13 @@ import { authorCreate, authorDelete, authorGetAll, authorUpdate } from './contro
 import { bookCreate, bookDelete, bookGetAll, bookGetById, bookUpdate } from './controller/BookController'
 import { fileGetDataById, fileGetInfoById, fileUpload } from './controller/FileController'
 import { genreCreate, genreDelete, genreGetAll, genreUpdate } from './controller/GenreController'
-import { languageCreate, languageDelete, languageGetAll, languageUpdate } from './controller/LanguageController'
+import {
+  languageById,
+  languageCreate,
+  languageDelete,
+  languageGetAll,
+  languageUpdate
+} from './controller/LanguageController'
 import { publisherCreate, publisherDelete, publisherGetAll, publisherUpdate } from './controller/PublisherController'
 import { userCreate } from './controller/UserController'
 import { authMiddleware } from './middleware/authMiddleware'
@@ -114,6 +120,12 @@ export const Routes: App.Route[] = [
     path: '/languages',
     middleware: [authMiddleware],
     action: languageGetAll
+  },
+  {
+    method: 'get',
+    path: '/languages/:id',
+    middleware: [authMiddleware],
+    action: languageById
   },
   {
     method: 'post',

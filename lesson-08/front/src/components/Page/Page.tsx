@@ -4,6 +4,7 @@ import { MainLayout } from "../../layouts/MainLayout/MainLayout";
 import { connect, MapStateToProps } from "react-redux";
 import { checkAccessToken } from "../../utils";
 import { RootState } from "../../store/types";
+import {BaseLayoutProps, BasePageProps} from "../../types/base";
 
 interface StateProps {
   isAuth: boolean;
@@ -14,8 +15,8 @@ interface OwnProps {
   unsecured?: boolean;
   onlyPublic?: boolean;
   path: string;
-  layout?: any;
-  component: any;
+  layout?: React.FC<BaseLayoutProps>;
+  component: React.FC<BasePageProps<any>>;
 }
 
 type Props = OwnProps & StateProps;
@@ -38,11 +39,15 @@ const PagePresenter: React.FC<Props> = ({
   }
 
   return (
-    <Route exact={exact} path={path}>
-      <Layout>
-        <Component />
-      </Layout>
-    </Route>
+    <Route
+      exact={exact}
+      path={path}
+      render={(props) => (
+        <Layout>
+          <Component {...props} />
+        </Layout>
+      )}
+    />
   );
 };
 

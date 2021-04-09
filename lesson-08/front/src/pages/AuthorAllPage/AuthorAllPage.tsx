@@ -1,17 +1,16 @@
 import block from "bem-cn";
 import React from "react";
-import "./AuthPage.css";
-import { AuthForm } from "../../components/Forms/AuthForm/AuthForm";
+import "./AuthorAllPage.css";
 import {BasePageProps} from "../../types/base";
 
 interface Props extends BasePageProps {}
 
-const b = block("auth-page");
+const b = block("author-all-page");
 
-export const AuthPage: React.FC<Props> = () => {
+export const AuthorAllPage: React.FC<Props> = () => {
   return (
     <div className={b()}>
-      <AuthForm />
+      <h1>Авторы</h1>
     </div>
   );
 };

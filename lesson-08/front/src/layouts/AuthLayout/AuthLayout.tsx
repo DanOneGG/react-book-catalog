@@ -2,8 +2,9 @@ import block from "bem-cn";
 import React from "react";
 import { Header } from "../../components/Header/Header";
 import "./AuthLayout.css";
+import {BaseLayoutProps} from "../../types/base";
 
-interface Props {}
+interface Props extends BaseLayoutProps {}
 
 const b = block("auth-layout");
 
