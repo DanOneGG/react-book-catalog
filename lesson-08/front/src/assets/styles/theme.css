@@ -1,49 +1,63 @@
 @import "colors.css";
 
 :root {
-  --body-bg: var(--color-e0);
-  --main-text: var(--color-1f);
+  --main: var(--color-orange);
+  --shadow: var(--color-2c-transparent);
+  --outline: var(--color-2c-transparent);
+
+  --body-bg: var(--color-white);
+  --main-text: var(--color-2c);
+  --help-text: var(--color-2c);
+
   --block-bg: var(--color-white);
   --block-text: var(--color-1f);
+
   --inactive: var(--color-2c);
   --error: var(--color-red);
-  --shadow: var(--color-2c-transparent);
 
   /* Header */
   --header-bg: var(--color-2c);
-  --header-text: var(--color-e0);
+  --header-text: var(--color-white);
 
   /* Spinner */
   --spinner-primary: var(--color-1f);
   --spinner-secondary: var(--color-e0);
 
   /* Button default */
-  --button-default-bg: transparent;
-  --button-default-text: var(--color-4c);
-  --button-default-disabled-bg: transparent;
+  --button-default-bg: var(--main);
+  --button-default-text: var(--color-white);
+  --button-default-disabled-bg: var(--outline);
   --button-default-disabled-text: var(--inactive);
-  --button-default-active-bg: transparent;
-  --button-default-active-text: var(--color-1f);
 
   /* Button primary */
-  --button-primary-bg: var(--color-4c);
+  --button-primary-bg: transparent;
   --button-primary-text: var(--color-white);
-  --button-primary-disabled-bg: var(--inactive);
-  --button-primary-disabled-text: var(--color-white);
-  --button-primary-active-bg: var(--color-1f);
-  --button-primary-active-text: var(--color-white);
+  --button-primary-border: var(--outline);
+  --button-primary-disabled-bg: var(--color-orange-outline);
+  --button-primary-disabled-text: var(--inactive);
+  --button-primary-active-border: transparent;
+  --button-primary-active-bg: var(--color-orange-outline);
+  --button-primary-active-text: var(--color-orange);
 
   /* Button secondary */
   --button-secondary-bg: transparent;
-  --button-secondary-text: var(--color-4c);
-  --button-secondary-disabled-bg: transparent;
+  --button-secondary-text: var(--main-text);
+  --button-secondary-border: var(--outline);
+  --button-secondary-disabled-bg: var(--outline);
   --button-secondary-disabled-text: var(--inactive);
-  --button-secondary-active-bg: transparent;
-  --button-secondary-active-text: var(--color-1f);
-
+  --button-secondary-active-border: transparent;
+  --button-secondary-active-bg: var(--color-orange-outline);
+  --button-secondary-active-text: var(--color-orange);
 
   /* Button link */
-  --button-link-text: var(--color-4c);
+  --button-link-text: var(--main-text);
   --button-link-disabled-text: var(--inactive);
-  --button-link-active-text: var(--color-1f);
+  --button-link-active-text: var(--main);
+
+  /* Input */
+  --input-border: var(--outline);
+  --input-focus: var(--color-orange-transparent);
+
+  /* Toggle button */
+  --toggle-active: var(--color-green);
 }

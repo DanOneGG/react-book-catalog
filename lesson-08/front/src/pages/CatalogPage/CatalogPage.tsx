@@ -1,46 +1,21 @@
 import block from "bem-cn";
 import React from "react";
+import { Card } from "../../components/Card/Card";
+import { BasePageProps } from "../../types/base";
 import "./CatalogPage.css";
-import {Select} from "../../components/Select/Select";
 
-interface Props {}
-
-interface User {
-  id: number;
-  name: string;
-  age: number;
-}
-
-interface UserTest {
-  id: number;
-  email: string;
-  num: number;
-}
-
-const users: User[] = [
-  {
-    id: 1,
-    name: 'Name 1',
-    age: 20
-  },
-  {
-    id: 2,
-    name: 'Name 2',
-    age: 30
-  }
-]
+interface Props extends BasePageProps {}
 
 const b = block("catalog-page");
 
-export const CatalogPage: React.FC<Props> = () => {
+export const CatalogPage: React.FC<Props> = ({ match }) => {
   return (
-    <div className={b()}>
-      <h1>Каталог</h1>
-      <Select<User>
-        data={users}
-        renderValue={item => `${item.id}`}
-        renderLabel={item => item.name + ' ' + item.age}
-      />
-    </div>
+    <Card title={"Каталог"} className={b()}>
+      {/*<Select<User>*/}
+      {/*  data={users}*/}
+      {/*  renderValue={item => `${item.id}`}*/}
+      {/*  renderLabel={item => item.name + ' ' + item.age}*/}
+      {/*/>*/}
+    </Card>
   );
 };

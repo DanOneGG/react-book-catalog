@@ -1,0 +1,31 @@
+.register-form {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  min-width: 200px;
+
+  &__title {
+    font-size: 20px;
+    text-align: center;
+    font-weight: 400;
+    margin-bottom: 20px;
+  }
+
+  &__subtitle {
+    margin: 12px 0;
+    color: var(--main-text);
+    font-size: 18px;
+    font-weight: 400;
+  }
+
+  &__field {
+    &:last-of-type {
+      margin-bottom: 12px;
+    }
+  }
+
+  &__error {
+    margin: 8px 0;
+    color: var(--error);
+  }
+}

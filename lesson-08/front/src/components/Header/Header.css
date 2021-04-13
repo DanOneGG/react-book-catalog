@@ -1,10 +1,11 @@
 .header {
   display: flex;
+  justify-content: space-between;
   align-items: center;
   padding: 12px 15%;
   height: 64px;
-  background-color: #1f1f1f;
-  color: #fff;
+  background-color: var(--header-bg);
+  color: var(--header-text);
 
   &__title {
     text-align: center;

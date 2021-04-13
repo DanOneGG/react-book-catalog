@@ -38,7 +38,12 @@ export const Button: React.FC<Props> = ({
   const visibleSpinner = useMemo<boolean>(() => loading && type !== ButtonType.Link, [type, loading]);
 
   return (
-    <button className={b({ [type]: true }).mix(className)} onClick={onClick} disabled={disabled || loading} type={htmlType}>
+    <button
+      className={b({ [type]: true }).mix(className)}
+      onClick={onClick}
+      disabled={disabled || loading}
+      type={htmlType}
+    >
       {visibleSpinner && <Spinner className={b("spinner")} type={spinnerType} size={24} />}
       <span className={b("children")}>{children}</span>
     </button>

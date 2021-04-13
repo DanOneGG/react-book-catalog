@@ -1,8 +1,9 @@
 import block from "bem-cn";
 import React from "react";
 import "./RefPage.css";
+import { BasePageProps } from "../../types/base";
 
-interface Props {}
+interface Props extends BasePageProps {}
 
 const b = block("ref-page");
 

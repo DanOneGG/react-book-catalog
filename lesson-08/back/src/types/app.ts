@@ -1,5 +1,5 @@
-import { NextFunction, Request as RequestExpress, Response } from 'express'
-import { UserEntity } from '../entity/UserEntity'
+import { NextFunction, Request as RequestExpress, Response } from "express";
+import { UserEntity } from "../entity/UserEntity";
 
 export declare namespace App {
   namespace Error {
@@ -29,10 +29,12 @@ export declare namespace App {
   }
 
   interface ParamsDictionary {
-    [key: string]: string
+    [key: string]: string;
   }
 
-  interface ParsedQs { [key: string]: undefined | string | string[] | ParsedQs | ParsedQs[] }
+  interface ParsedQs {
+    [key: string]: undefined | string | string[] | ParsedQs | ParsedQs[];
+  }
 
   interface TokenPair {
     accessToken: string;
@@ -40,15 +42,15 @@ export declare namespace App {
   }
 
   type Request = RequestExpress & {
-    user?: UserEntity
-  }
+    user?: UserEntity;
+  };
 
-  type ErrorMiddleware<T extends Request = Request> = (err: Error, req: T, res: Response, next: NextFunction) => void
+  type ErrorMiddleware<T extends Request = Request> = (err: Error, req: T, res: Response, next: NextFunction) => void;
 
-  type Action<T extends Request = Request> = (req: T, res: Response, next: NextFunction) => Promise<void>
+  type Action<T extends Request = Request> = (req: T, res: Response, next: NextFunction) => Promise<void>;
 
   interface Route {
-    method: 'get' | 'post' | 'put' | 'delete';
+    method: "get" | "post" | "put" | "delete";
     path: string;
     middleware?: Action[];
     action: Action;

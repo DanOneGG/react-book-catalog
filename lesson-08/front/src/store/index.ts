@@ -1,11 +1,11 @@
 import { applyMiddleware, compose, createStore } from "redux";
-import { PersistConfig } from "redux-persist/es/types";
-import thunk from "redux-thunk";
 import { persistReducer, persistStore } from "redux-persist";
+import { PersistConfig } from "redux-persist/es/types";
 import storage from "redux-persist/lib/storage";
+import thunk from "redux-thunk";
+import { appClearError } from "./app/actions";
 import { rootReducer } from "./reducer";
 import { RootState } from "./types";
-import {appClearError} from "./app/actions";
 
 const config: PersistConfig<RootState.State> = {
   key: "catalog",
@@ -20,6 +20,6 @@ export const store = createStore(
 );
 
 export const persistor = persistStore(store, {}, async () => {
-  const { dispatch } = store
-  dispatch(appClearError())
-})
+  const { dispatch } = store;
+  dispatch(appClearError());
+});

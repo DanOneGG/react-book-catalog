@@ -3,8 +3,8 @@
   outline: none;
   width: 50px;
   height: 24px;
-  background-color: #fff;
-  border: #2c2c2c solid 2px;
+  background-color: var(--block-text);
+  border: var(--inactive) solid 2px;
   border-radius: 12px;
   cursor: pointer;
   transition: border-color 0.15s linear;
@@ -13,7 +13,7 @@
     content: "";
     display: block;
     position: absolute;
-    background-color: #2c2c2c;
+    background-color: var(--inactive);
     border-radius: 50%;
     width: 17px;
     height: 17px;
@@ -24,10 +24,10 @@
   }
 
   &_active {
-    border-color: #0b750f;
+    border-color: var(--toggle-active);
 
     &:before {
-      background-color: #0b750f;
+      background-color: var(--toggle-active);
       transform: translate(24px, -50%);
     }
   }

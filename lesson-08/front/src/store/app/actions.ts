@@ -1,9 +1,8 @@
 import { App } from "../../types/app";
 import { AppAction } from "./appAction";
 import { AppState } from "./types";
-import {apiAuthLogin, apiAuthLogout} from "../../api/auth";
+import { apiAuthLogin, apiAuthLogout } from "../../api/auth";
 import { browserHistory } from "../../browserHistory";
-import { apiUserCreate } from "../../api/user";
 
 const appFetch = (): AppState.Action.Fetch => ({
   type: AppAction.Fetch,
@@ -20,13 +19,12 @@ const appFetchError = (payload: string): AppState.Action.FetchError => ({
 });
 
 export const appClearError = (): AppState.Action.ClearError => ({
-  type: AppAction.ClearError
-})
+  type: AppAction.ClearError,
+});
 
 const appClear = (): AppState.Action.Clear => ({
-  type: AppAction.Clear
-})
-
+  type: AppAction.Clear,
+});
 
 export const appActions: AppState.ActionThunk = {
   appLogin: (params) => async (dispatch) => {
@@ -40,31 +38,19 @@ export const appActions: AppState.ActionThunk = {
       dispatch(appFetchError(err.message));
     }
   },
-  appRegister: (params) => async (dispatch) => {
-    dispatch(appFetch());
-
-    try {
-      await apiUserCreate(params);
-      const tokenPair = await apiAuthLogin({ login: params.login, password: params.password });
-      dispatch(appFetchSuccess(tokenPair));
-      browserHistory.push("/");
-    } catch (err) {
-      dispatch(appFetchError("Ошибка регистрации."));
-    }
-  },
   clearError: () => (dispatch, getState) => {
-    const { errorText } = getState().app
-    if (errorText !== '') {
-      dispatch(appClearError())
+    const { errorText } = getState().app;
+    if (errorText !== "") {
+      dispatch(appClearError());
     }
   },
   clear: () => async (dispatch) => {
     try {
-      await apiAuthLogout()
+      await apiAuthLogout();
     } catch (err) {
-      console.error(err)
+      console.error(err);
     } finally {
-      dispatch(appClear())
+      dispatch(appClear());
     }
-  }
+  },
 };

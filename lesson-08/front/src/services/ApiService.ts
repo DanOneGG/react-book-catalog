@@ -15,7 +15,7 @@ export const ApiService = (
     const accessToken = state.app.accessToken;
 
     if (accessToken) {
-      // headers['Authorization'] = `Bearer ${accessToken}`
+      headers["Authorization"] = `Bearer ${accessToken}`;
     }
   }
 

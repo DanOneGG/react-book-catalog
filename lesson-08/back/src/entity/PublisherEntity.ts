@@ -1,17 +1,17 @@
 /**
  * Издательство
  */
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm'
-import { BookEntity } from './BookEntity'
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { BookEntity } from "./BookEntity";
 
-@Entity('publisher')
+@Entity("publisher")
 export class PublisherEntity {
   @PrimaryGeneratedColumn()
-  id: number
+  id: number;
 
   @Column({ unique: true })
-  name: string
+  name: string;
 
   @OneToMany(() => BookEntity, ({ publisher }) => publisher)
-  books: BookEntity
+  books: BookEntity;
 }

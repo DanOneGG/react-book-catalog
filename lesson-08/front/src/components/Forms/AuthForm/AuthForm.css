@@ -13,7 +13,7 @@
 
   &__subtitle {
     margin: 12px 0;
-    color: dimgrey;
+    color: var(--main-text);
     font-size: 18px;
     font-weight: 400;
   }
@@ -26,6 +26,10 @@
 
   &__error {
     margin: 8px 0;
-    color: dimgrey;
+    color: var(--error);
+  }
+
+  &__btn:last-of-type {
+    margin-top: 4px;
   }
 }

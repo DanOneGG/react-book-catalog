@@ -1,31 +1,31 @@
-import { Request as RequestExpress } from 'express'
-import { DeepPartial } from 'typeorm'
-import { PublisherEntity } from '../entity/PublisherEntity'
-import { App } from './app'
+import { Request as RequestExpress } from "express";
+import { DeepPartial } from "typeorm";
+import { PublisherEntity } from "../entity/PublisherEntity";
+import { App } from "./app";
 
 export declare namespace Publisher {
   interface Repository {
-    getAll (): Promise<PublisherEntity[]>
+    getAll(): Promise<PublisherEntity[]>;
 
-    getById (publisherId: string | number): Promise<PublisherEntity | undefined>
+    getById(publisherId: string | number): Promise<PublisherEntity | undefined>;
 
-    create (publisherData: DeepPartial<PublisherEntity>): Promise<PublisherEntity>
+    create(publisherData: DeepPartial<PublisherEntity>): Promise<PublisherEntity>;
 
-    update (publisherId: number | string, publisherData: DeepPartial<PublisherEntity>): Promise<PublisherEntity>
+    update(publisherId: number | string, publisherData: DeepPartial<PublisherEntity>): Promise<PublisherEntity>;
 
-    delete (publisher: PublisherEntity): Promise<void>
+    delete(publisher: PublisherEntity): Promise<void>;
 
-    search (value: string): Promise<PublisherEntity[]>
+    search(value: string): Promise<PublisherEntity[]>;
 
-    hasExist (name: string): Promise<boolean>
+    hasExist(name: string): Promise<boolean>;
   }
 
   namespace List {
-    interface Query{
+    interface Query {
       search?: string;
     }
 
-    type Request = RequestExpress<null, null, null, Query & App.ParsedQs>
+    type Request = RequestExpress<null, null, null, Query & App.ParsedQs>;
   }
 
   namespace Create {
@@ -33,7 +33,7 @@ export declare namespace Publisher {
       name: string;
     }
 
-    type Request = RequestExpress<null, null, Body>
+    type Request = RequestExpress<null, null, Body>;
   }
 
   namespace Update {
@@ -42,7 +42,7 @@ export declare namespace Publisher {
       name: string;
     }
 
-    type Request = RequestExpress<null, null, Body>
+    type Request = RequestExpress<null, null, Body>;
   }
 
   namespace Delete {
@@ -50,6 +50,14 @@ export declare namespace Publisher {
       id: number;
     }
 
-    type Request = RequestExpress<Params & App.ParamsDictionary, null, null>
+    type Request = RequestExpress<Params & App.ParamsDictionary, null, null>;
+  }
+
+  namespace Single {
+    interface Params {
+      id: number;
+    }
+
+    type Request = RequestExpress<Params & App.ParamsDictionary, null, null>;
   }
 }

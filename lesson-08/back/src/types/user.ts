@@ -1,25 +1,24 @@
-import { Request as RequestExpress } from 'express'
-import { DeepPartial } from 'typeorm'
-import { UserEntity } from '../entity/UserEntity'
-
+import { Request as RequestExpress } from "express";
+import { DeepPartial } from "typeorm";
+import { UserEntity } from "../entity/UserEntity";
 
 export declare namespace User {
   interface Repository {
-    getById (userId: string | number): Promise<UserEntity | undefined>
+    getById(userId: string | number): Promise<UserEntity | undefined>;
 
-    getFullByLogin (login: string): Promise<UserEntity | undefined>
+    getFullByLogin(login: string): Promise<UserEntity | undefined>;
 
-    create (userData: DeepPartial<UserEntity>): Promise<UserEntity>
+    create(userData: DeepPartial<UserEntity>): Promise<UserEntity>;
 
-    updateRefreshToken (
+    updateRefreshToken(
       userId: string | number,
       refreshToken: string | null,
       refreshTokenExp: Date | null
-    ): Promise<boolean>
+    ): Promise<boolean>;
 
-    hasExistLogin (login: string): Promise<boolean>
+    hasExistLogin(login: string): Promise<boolean>;
 
-    hasExistEmail (email: string): Promise<boolean>
+    hasExistEmail(email: string): Promise<boolean>;
   }
 
   namespace Create {
@@ -30,6 +29,6 @@ export declare namespace User {
       passwordConfirm: string;
     }
 
-    type Request = RequestExpress<null, null, Body>
+    type Request = RequestExpress<null, null, Body>;
   }
 }
