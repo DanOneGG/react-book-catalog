@@ -9,4 +9,10 @@ export declare namespace Language {
       name: string;
     }
   }
+
+  namespace All {
+    interface Search {
+      search?: string;
+    }
+  }
 }

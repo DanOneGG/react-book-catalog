@@ -5,3 +5,18 @@ export const apiGenreGetAll = async (): Promise<Genre.Data[]> => {
   const { data } = await ApiService(true).get<Genre.Data[]>("/genres");
   return data;
 };
+
+export const apiGenreGetById = async (id: number): Promise<Genre.Data> => {
+  const { data } = await ApiService(true).get<Genre.Data>(`/genres/${id}`);
+  return data;
+};
+
+export const apiGenreCreate = async (params: Genre.Create.Params): Promise<Genre.Data> => {
+  const { data } = await ApiService(true).post<Genre.Data>(`/genres`, params);
+  return data;
+};
+
+export const apiGenreUpdate = async (params: Genre.Data): Promise<Genre.Data> => {
+  const { data } = await ApiService(true).put<Genre.Data>(`/genres/`, params);
+  return data;
+};

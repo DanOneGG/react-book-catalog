@@ -1,7 +1,23 @@
-import { ApiService } from '../services/ApiService'
-import { Publisher } from '../types/publisher'
+import { ApiService } from "../services/ApiService";
+import { Publisher } from "../types/publisher";
+import { Genre } from "../types/genre";
 
 export const apiPublisherGetAll = async (params: Publisher.All.Search): Promise<Publisher.Data[]> => {
-  const { data } = await ApiService(true).get<Publisher.Data[]>('/publishers', { params })
-  return data
-}
+  const { data } = await ApiService(true).get<Publisher.Data[]>("/publishers", { params });
+  return data;
+};
+
+export const apiPublisherGetById = async (id: number): Promise<Publisher.Data> => {
+  const { data } = await ApiService(true).get<Genre.Data>(`/publishers/${id}`);
+  return data;
+};
+
+export const apiPublisherCreate = async (params: Publisher.Create.Params): Promise<Publisher.Data> => {
+  const { data } = await ApiService(true).post<Publisher.Data>(`/publishers`, params);
+  return data;
+};
+
+export const apiPublisherUpdate = async (params: Publisher.Data): Promise<Genre.Data> => {
+  const { data } = await ApiService(true).put<Publisher.Data>(`/publishers/`, params);
+  return data;
+};

@@ -4,6 +4,12 @@ export declare namespace Publisher {
     name: string;
   }
 
+  namespace Create {
+    interface Params {
+      name: string;
+    }
+  }
+
   namespace All {
     interface Search {
       search?: string;
