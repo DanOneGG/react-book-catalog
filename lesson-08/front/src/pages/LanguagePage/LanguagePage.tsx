@@ -31,6 +31,7 @@ export const LanguagePage: React.FC<Props> = ({ match }) => {
     <Card
       title={data ? `${data?.name} язык` : ''}
       rightElement={button}
+      className={b()}
     >
       {loading ? (
         <Spinner size={32} />

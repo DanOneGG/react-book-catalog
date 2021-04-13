@@ -43,7 +43,6 @@ export const Input = React.forwardRef<HTMLInputElement, Props>(
     },
     ref
   ) => {
-    const [currentFocus, setCurrentFocus] = useState<boolean>(false);
     const [currentValue, setCurrentValue] = useState<string>(defaultValue);
 
     const handlerChange: ChangeEventHandler<HTMLInputElement> = (event) => {
@@ -54,13 +53,11 @@ export const Input = React.forwardRef<HTMLInputElement, Props>(
 
     const handlerFocus: FocusEventHandler<HTMLInputElement> = (event) => {
       event.preventDefault();
-      setCurrentFocus(true);
       onFocus(event);
     };
 
     const handlerBlur: FocusEventHandler<HTMLInputElement> = (event) => {
       event.preventDefault();
-      setCurrentFocus(false);
       onBlur(event);
     };
 

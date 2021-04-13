@@ -28,4 +28,8 @@
     margin: 8px 0;
     color: var(--error);
   }
+
+  &__btn:last-of-type {
+    margin-top: 4px;
+  }
 }

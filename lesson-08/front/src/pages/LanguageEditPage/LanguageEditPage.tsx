@@ -17,7 +17,7 @@ export const LanguageEditPage: React.FC<Props> = ({ match }) => {
   const { data, loading } = useLanguageById(id)
 
   return (
-    <Card title={!!data ? 'Редактировать' : 'Создать'}>
+    <Card title={!!data ? 'Редактировать' : 'Создать'} className={b()}>
       {loading ? (
         <Spinner size={32} />
       ) : (

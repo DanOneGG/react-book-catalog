@@ -6,8 +6,8 @@ export const navigation: Navigation[] = [
     text: 'Каталог'
   },
   {
+    path: '/ref',
     text: 'Справочники',
-    // path: '/ref',
     child: [
       {
         path: '/ref/languages',

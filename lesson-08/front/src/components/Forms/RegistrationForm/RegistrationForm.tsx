@@ -100,7 +100,7 @@ export const RegistrationForm: React.FC<Props> = () => {
         disabled={loading}
       />
       {!!errorText && <p className={b("error")}>{errorText}</p>}
-      <Button onClick={handlerSubmit} disabled={loading} type={ButtonType.Primary}>
+      <Button onClick={handlerSubmit} disabled={loading} type={ButtonType.Default}>
         Зарегистрироваться
       </Button>
     </form>

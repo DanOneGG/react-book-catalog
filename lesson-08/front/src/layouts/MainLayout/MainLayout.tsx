@@ -25,6 +25,7 @@ const MainLayoutPresenter: React.FC<Props> = ({ children, clear }) => {
         Выход
       </Button>
     ),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     []
   );
 
