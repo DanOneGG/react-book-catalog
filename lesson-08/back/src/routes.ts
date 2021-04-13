@@ -1,190 +1,208 @@
-import { authLogin, authLogout, authRefresh } from './controller/AuthController'
-import { authorCreate, authorDelete, authorGetAll, authorUpdate } from './controller/AuthorController'
-import { bookCreate, bookDelete, bookGetAll, bookGetById, bookUpdate } from './controller/BookController'
-import { fileGetDataById, fileGetInfoById, fileUpload } from './controller/FileController'
-import { genreCreate, genreDelete, genreGetAll, genreUpdate } from './controller/GenreController'
+import { authLogin, authLogout, authRefresh } from "./controller/AuthController";
+import { authorCreate, authorDelete, authorGetAll, authorUpdate } from "./controller/AuthorController";
+import { bookCreate, bookDelete, bookGetAll, bookGetById, bookUpdate } from "./controller/BookController";
+import { fileGetDataById, fileGetInfoById, fileUpload } from "./controller/FileController";
+import { genreCreate, genreDelete, genreGetAll, genreGetById, genreUpdate } from "./controller/GenreController";
 import {
-  languageById,
+  languageGetById,
   languageCreate,
   languageDelete,
   languageGetAll,
-  languageUpdate
-} from './controller/LanguageController'
-import { publisherCreate, publisherDelete, publisherGetAll, publisherUpdate } from './controller/PublisherController'
-import { userCreate } from './controller/UserController'
-import { authMiddleware } from './middleware/authMiddleware'
-import { App } from './types/app'
+  languageUpdate,
+} from "./controller/LanguageController";
+import {
+  publisherCreate,
+  publisherDelete,
+  publisherGetAll,
+  publisherGetById,
+  publisherUpdate,
+} from "./controller/PublisherController";
+import { userCreate } from "./controller/UserController";
+import { authMiddleware } from "./middleware/authMiddleware";
+import { App } from "./types/app";
 
 export const Routes: App.Route[] = [
   {
-    method: 'post',
-    path: '/auth/login',
-    action: authLogin
+    method: "post",
+    path: "/auth/login",
+    action: authLogin,
   },
   {
-    method: 'post',
-    path: '/auth/refresh',
-    action: authRefresh
+    method: "post",
+    path: "/auth/refresh",
+    action: authRefresh,
   },
   {
-    method: 'post',
-    path: '/auth/logout',
+    method: "post",
+    path: "/auth/logout",
     middleware: [authMiddleware],
-    action: authLogout
+    action: authLogout,
   },
   {
-    method: 'post',
-    path: '/users/create',
-    action: userCreate
+    method: "post",
+    path: "/users/create",
+    action: userCreate,
   },
   {
-    method: 'get',
-    path: '/books',
+    method: "get",
+    path: "/books",
     middleware: [authMiddleware],
-    action: bookGetAll
+    action: bookGetAll,
   },
   {
-    method: 'get',
-    path: '/books/:id',
+    method: "get",
+    path: "/books/:id",
     middleware: [authMiddleware],
-    action: bookGetById
+    action: bookGetById,
   },
   {
-    method: 'post',
-    path: '/books',
+    method: "post",
+    path: "/books",
     middleware: [authMiddleware],
-    action: bookCreate
+    action: bookCreate,
   },
   {
-    method: 'put',
-    path: '/books',
+    method: "put",
+    path: "/books",
     middleware: [authMiddleware],
-    action: bookUpdate
+    action: bookUpdate,
   },
   {
-    method: 'delete',
-    path: '/books/:id',
+    method: "delete",
+    path: "/books/:id",
     middleware: [authMiddleware],
-    action: bookDelete
+    action: bookDelete,
   },
   {
-    method: 'get',
-    path: '/authors',
+    method: "get",
+    path: "/authors",
     middleware: [authMiddleware],
-    action: authorGetAll
+    action: authorGetAll,
   },
   {
-    method: 'post',
-    path: '/authors',
+    method: "post",
+    path: "/authors",
     middleware: [authMiddleware],
-    action: authorCreate
+    action: authorCreate,
   },
   {
-    method: 'put',
-    path: '/authors',
+    method: "put",
+    path: "/authors",
     middleware: [authMiddleware],
-    action: authorUpdate
+    action: authorUpdate,
   },
   {
-    method: 'delete',
-    path: '/authors/:id',
+    method: "delete",
+    path: "/authors/:id",
     middleware: [authMiddleware],
-    action: authorDelete
+    action: authorDelete,
   },
   {
-    method: 'get',
-    path: '/genres',
+    method: "get",
+    path: "/genres",
     middleware: [authMiddleware],
-    action: genreGetAll
+    action: genreGetAll,
   },
   {
-    method: 'post',
-    path: '/genres',
+    method: "get",
+    path: "/genres/:id",
     middleware: [authMiddleware],
-    action: genreCreate
+    action: genreGetById,
   },
   {
-    method: 'put',
-    path: '/genres',
+    method: "post",
+    path: "/genres",
     middleware: [authMiddleware],
-    action: genreUpdate
+    action: genreCreate,
   },
   {
-    method: 'delete',
-    path: '/genres/:id',
+    method: "put",
+    path: "/genres",
     middleware: [authMiddleware],
-    action: genreDelete
+    action: genreUpdate,
   },
   {
-    method: 'get',
-    path: '/languages',
+    method: "delete",
+    path: "/genres/:id",
     middleware: [authMiddleware],
-    action: languageGetAll
+    action: genreDelete,
   },
   {
-    method: 'get',
-    path: '/languages/:id',
+    method: "get",
+    path: "/languages",
     middleware: [authMiddleware],
-    action: languageById
+    action: languageGetAll,
   },
   {
-    method: 'post',
-    path: '/languages',
+    method: "get",
+    path: "/languages/:id",
     middleware: [authMiddleware],
-    action: languageCreate
+    action: languageGetById,
   },
   {
-    method: 'put',
-    path: '/languages',
+    method: "post",
+    path: "/languages",
     middleware: [authMiddleware],
-    action: languageUpdate
+    action: languageCreate,
   },
   {
-    method: 'delete',
-    path: '/languages/:id',
+    method: "put",
+    path: "/languages",
     middleware: [authMiddleware],
-    action: languageDelete
+    action: languageUpdate,
   },
   {
-    method: 'get',
-    path: '/publishers',
+    method: "delete",
+    path: "/languages/:id",
     middleware: [authMiddleware],
-    action: publisherGetAll
+    action: languageDelete,
   },
   {
-    method: 'post',
-    path: '/publishers',
+    method: "get",
+    path: "/publishers",
     middleware: [authMiddleware],
-    action: publisherCreate
+    action: publisherGetAll,
   },
   {
-    method: 'put',
-    path: '/publishers',
+    method: "get",
+    path: "/publishers/:id",
     middleware: [authMiddleware],
-    action: publisherUpdate
+    action: publisherGetById,
   },
   {
-    method: 'delete',
-    path: '/publishers/:id',
+    method: "post",
+    path: "/publishers",
     middleware: [authMiddleware],
-    action: publisherDelete
+    action: publisherCreate,
   },
   {
-    method: 'post',
-    path: '/files/upload',
+    method: "put",
+    path: "/publishers",
     middleware: [authMiddleware],
-    action: fileUpload
+    action: publisherUpdate,
   },
   {
-    method: 'get',
-    path: '/files/info/:id',
+    method: "delete",
+    path: "/publishers/:id",
     middleware: [authMiddleware],
-    action: fileGetInfoById
+    action: publisherDelete,
   },
   {
-    method: 'get',
-    path: '/files/:id',
+    method: "post",
+    path: "/files/upload",
     middleware: [authMiddleware],
-    action: fileGetDataById
+    action: fileUpload,
   },
-]
+  {
+    method: "get",
+    path: "/files/info/:id",
+    middleware: [authMiddleware],
+    action: fileGetInfoById,
+  },
+  {
+    method: "get",
+    path: "/files/:id",
+    middleware: [authMiddleware],
+    action: fileGetDataById,
+  },
+];

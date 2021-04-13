@@ -1,17 +1,17 @@
 /**
  * Язык
  */
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm'
-import { BookEntity } from './BookEntity'
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { BookEntity } from "./BookEntity";
 
-@Entity('language')
+@Entity("language")
 export class LanguageEntity {
   @PrimaryGeneratedColumn()
-  id: number
+  id: number;
 
   @Column({ unique: true })
-  name: string
+  name: string;
 
   @OneToMany(() => BookEntity, ({ language }) => language)
-  books: BookEntity
+  books: BookEntity;
 }

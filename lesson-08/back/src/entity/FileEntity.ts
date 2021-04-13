@@ -1,32 +1,32 @@
 /**
  * Файл
  */
-import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm'
-import { BookEntity } from './BookEntity'
+import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { BookEntity } from "./BookEntity";
 
-@Entity('file')
+@Entity("file")
 export class FileEntity {
   @PrimaryGeneratedColumn()
-  id: number
+  id: number;
 
   @Column()
-  originName: string
+  originName: string;
 
   @Column()
-  fileName: string
+  fileName: string;
 
   @Column()
-  extension: string
+  extension: string;
 
   @Column()
-  mime: string
+  mime: string;
 
   @Column()
-  size: number
+  size: number;
 
   @CreateDateColumn()
-  createdAt: Date
+  createdAt: Date;
 
   @OneToMany(() => BookEntity, ({ image }) => image)
-  book: BookEntity
+  book: BookEntity;
 }

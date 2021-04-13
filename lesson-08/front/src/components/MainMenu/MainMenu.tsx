@@ -10,14 +10,7 @@ const b = block("main-menu");
 
 export const MainMenu: React.FC<Props> = () => {
   return (
-    <nav className={b()}>
-      {navigation.map(
-        ({ text, path, child }) =>
-          path && (
-            <NavLink to={path}>{text}</NavLink>
-          )
-      )}
-    </nav>
+    <nav className={b()}>{navigation.map(({ text, path, child }) => path && <NavLink to={path}>{text}</NavLink>)}</nav>
   );
 };
 

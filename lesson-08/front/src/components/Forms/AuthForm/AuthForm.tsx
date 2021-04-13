@@ -90,10 +90,15 @@ const AuthFormPresenter: React.FC<Props> = ({ loading, errorText, appLogin, clea
         disabled={loading}
       />
       {!!errorText && <p className={b("error")}>{errorText}</p>}
-      <Button onClick={handlerSubmit} disabled={loading} className={b('btn')}>
+      <Button onClick={handlerSubmit} disabled={loading} className={b("btn")}>
         Войти
       </Button>
-      <Button type={ButtonType.Secondary} onClick={() => browserHistory.push("/registration")} disabled={loading} className={b('btn')}>
+      <Button
+        type={ButtonType.Secondary}
+        onClick={() => browserHistory.push("/registration")}
+        disabled={loading}
+        className={b("btn")}
+      >
         Зарегистрироваться
       </Button>
     </form>

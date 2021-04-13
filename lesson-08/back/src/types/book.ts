@@ -1,35 +1,35 @@
-import { Request as RequestExpress } from 'express'
-import { DeepPartial } from 'typeorm'
-import { AuthorEntity } from '../entity/AuthorEntity'
-import { BookEntity } from '../entity/BookEntity'
-import { GenreEntity } from '../entity/GenreEntity'
-import { LanguageEntity } from '../entity/LanguageEntity'
-import { PublisherEntity } from '../entity/PublisherEntity'
-import { App } from './app'
+import { Request as RequestExpress } from "express";
+import { DeepPartial } from "typeorm";
+import { AuthorEntity } from "../entity/AuthorEntity";
+import { BookEntity } from "../entity/BookEntity";
+import { GenreEntity } from "../entity/GenreEntity";
+import { LanguageEntity } from "../entity/LanguageEntity";
+import { PublisherEntity } from "../entity/PublisherEntity";
+import { App } from "./app";
 
 export declare namespace Book {
   interface Repository {
-    getAll (): Promise<BookEntity[]>
+    getAll(): Promise<BookEntity[]>;
 
-    getAllWithRelations (): Promise<BookEntity[]>
+    getAllWithRelations(): Promise<BookEntity[]>;
 
-    getById (bookId: string | number): Promise<BookEntity | undefined>
+    getById(bookId: string | number): Promise<BookEntity | undefined>;
 
-    getByIdWithRelations (bookId: string | number): Promise<BookEntity | undefined>
+    getByIdWithRelations(bookId: string | number): Promise<BookEntity | undefined>;
 
-    create (bookData: DeepPartial<BookEntity>): Promise<BookEntity>
+    create(bookData: DeepPartial<BookEntity>): Promise<BookEntity>;
 
-    update (bookId: number | string, bookData: DeepPartial<BookEntity>): Promise<BookEntity>
+    update(bookId: number | string, bookData: DeepPartial<BookEntity>): Promise<BookEntity>;
 
-    delete (book: BookEntity): Promise<void>
+    delete(book: BookEntity): Promise<void>;
 
-    attachAuthors (book: BookEntity, authors: AuthorEntity[]): Promise<BookEntity>
+    attachAuthors(book: BookEntity, authors: AuthorEntity[]): Promise<BookEntity>;
 
-    detachAllAuthors (book: BookEntity): Promise<void>
+    detachAllAuthors(book: BookEntity): Promise<void>;
 
-    hasExistIsbn (isbn: string): Promise<boolean>
+    hasExistIsbn(isbn: string): Promise<boolean>;
 
-    search (value: string): Promise<BookEntity[]>
+    search(value: string): Promise<BookEntity[]>;
   }
 
   namespace List {
@@ -37,7 +37,7 @@ export declare namespace Book {
       search?: string;
     }
 
-    type Request = RequestExpress<null, null, null, Query & App.ParsedQs>
+    type Request = RequestExpress<null, null, null, Query & App.ParsedQs>;
   }
 
   namespace Create {
@@ -53,7 +53,7 @@ export declare namespace Book {
       description?: string;
     }
 
-    type Request = RequestExpress<null, null, Body>
+    type Request = RequestExpress<null, null, Body>;
   }
 
   namespace Update {
@@ -70,7 +70,7 @@ export declare namespace Book {
       authors?: number[];
     }
 
-    type Request = RequestExpress<null, null, Body>
+    type Request = RequestExpress<null, null, Body>;
   }
 
   namespace Delete {
@@ -78,7 +78,7 @@ export declare namespace Book {
       id: number;
     }
 
-    type Request = RequestExpress<Params & App.ParamsDictionary, null, null>
+    type Request = RequestExpress<Params & App.ParamsDictionary, null, null>;
   }
 
   namespace Single {
@@ -86,6 +86,6 @@ export declare namespace Book {
       id: number;
     }
 
-    type Request = RequestExpress<Params & App.ParamsDictionary, null, null>
+    type Request = RequestExpress<Params & App.ParamsDictionary, null, null>;
   }
 }

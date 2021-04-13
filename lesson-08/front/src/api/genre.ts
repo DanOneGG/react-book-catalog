@@ -1,8 +1,8 @@
 import { ApiService } from "../services/ApiService";
 import { Genre } from "../types/genre";
 
-export const apiGenreGetAll = async (): Promise<Genre.Data[]> => {
-  const { data } = await ApiService(true).get<Genre.Data[]>("/genres");
+export const apiGenreGetAll = async (params: Genre.All.Search): Promise<Genre.Data[]> => {
+  const { data } = await ApiService(true).get<Genre.Data[]>("/genres", { params });
   return data;
 };
 

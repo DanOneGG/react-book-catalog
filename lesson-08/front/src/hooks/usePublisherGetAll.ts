@@ -1,39 +1,38 @@
-import { useEffect, useState } from 'react'
-import { apiPublisherGetAll } from '../api/publisher'
-import { Publisher } from '../types/publisher'
+import { useEffect, useState } from "react";
+import { apiPublisherGetAll } from "../api/publisher";
+import { Publisher } from "../types/publisher";
 
 interface UsePublisherGetAll {
-  data: Publisher.Data[],
+  data: Publisher.Data[];
   loading: boolean;
   setSearch: (search: string) => void;
 }
 
-export const usePublisherGetAll = (defaultSearch: string = ''): UsePublisherGetAll => {
-  const [loading, setLoading] = useState<boolean>(false)
-  const [data, setData] = useState<Publisher.Data[]>([])
-  const [search, setSearch] = useState<string>(defaultSearch)
+export const usePublisherGetAll = (defaultSearch: string = ""): UsePublisherGetAll => {
+  const [loading, setLoading] = useState<boolean>(false);
+  const [data, setData] = useState<Publisher.Data[]>([]);
+  const [search, setSearch] = useState<string>(defaultSearch);
 
   useEffect(() => {
-    const params: Publisher.All.Search = {}
+    const params: Publisher.All.Search = {};
 
     if (search) {
-      params.search = search
+      params.search = search;
     }
 
-    setLoading(true)
+    setLoading(true);
     apiPublisherGetAll(params)
       .then(setData)
-      .catch(err => {
-        console.error(err)
-        setData([])
+      .catch((err) => {
+        console.error(err);
+        setData([]);
       })
-      .then(() => setLoading(false))
-
-  }, [search])
+      .then(() => setLoading(false));
+  }, [search]);
 
   return {
     data,
     loading,
-    setSearch
-  }
-}
+    setSearch,
+  };
+};

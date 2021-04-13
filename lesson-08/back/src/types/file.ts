@@ -1,31 +1,31 @@
-import { Request as RequestExpress } from 'express'
-import { UploadedFile } from 'express-fileupload'
-import { DeepPartial } from 'typeorm'
-import { BookEntity } from '../entity/BookEntity'
-import { FileEntity } from '../entity/FileEntity'
-import { App } from './app'
+import { Request as RequestExpress } from "express";
+import { UploadedFile } from "express-fileupload";
+import { DeepPartial } from "typeorm";
+import { BookEntity } from "../entity/BookEntity";
+import { FileEntity } from "../entity/FileEntity";
+import { App } from "./app";
 
 export declare namespace File {
   interface Service {
-    getFullPath (fileName: string): string
+    getFullPath(fileName: string): string;
 
-    getExtension (filename: string): string
+    getExtension(filename: string): string;
 
-    getMime (fileName: string): string
+    getMime(fileName: string): string;
 
-    getSize (fileName: string): number
+    getSize(fileName: string): number;
 
-    exists (fileName: string): boolean
+    exists(fileName: string): boolean;
 
-    saveFile (data: Buffer, path: string): Promise<boolean>
+    saveFile(data: Buffer, path: string): Promise<boolean>;
   }
 
   interface Repository {
-    getInfoById (fileId: string | number): Promise<FileEntity | undefined>
+    getInfoById(fileId: string | number): Promise<FileEntity | undefined>;
 
-    create (fileInfo: DeepPartial<FileEntity>): Promise<FileEntity>
+    create(fileInfo: DeepPartial<FileEntity>): Promise<FileEntity>;
 
-    delete (fileId: number | string): Promise<boolean>
+    delete(fileId: number | string): Promise<boolean>;
   }
 
   namespace Create {
@@ -33,7 +33,7 @@ export declare namespace File {
       file: any;
     }
 
-    type Request = RequestExpress<null, null, Body>
+    type Request = RequestExpress<null, null, Body>;
   }
 
   namespace Delete {
@@ -41,7 +41,7 @@ export declare namespace File {
       id: number;
     }
 
-    type Request = RequestExpress<Params & App.ParamsDictionary, null, null>
+    type Request = RequestExpress<Params & App.ParamsDictionary, null, null>;
   }
 
   namespace Single {
@@ -49,6 +49,6 @@ export declare namespace File {
       id: number;
     }
 
-    type Request = RequestExpress<Params & App.ParamsDictionary, null, null>
+    type Request = RequestExpress<Params & App.ParamsDictionary, null, null>;
   }
 }

@@ -1,18 +1,18 @@
-import { Request as RequestExpress } from 'express'
-import { UserEntity } from '../entity/UserEntity'
-import { App } from './app'
+import { Request as RequestExpress } from "express";
+import { UserEntity } from "../entity/UserEntity";
+import { App } from "./app";
 
 export declare namespace Auth {
   interface Service {
-    getPasswordHash (password: string): Promise<string>
+    getPasswordHash(password: string): Promise<string>;
 
-    checkPassword (password: string, hash: string): Promise<boolean>
+    checkPassword(password: string, hash: string): Promise<boolean>;
 
-    getTokenPair (user: UserEntity): Promise<App.TokenPair>
+    getTokenPair(user: UserEntity): Promise<App.TokenPair>;
 
-    validateToken (accessToken: string): Promise<App.Token.Payload | null>
+    validateToken(accessToken: string): Promise<App.Token.Payload | null>;
 
-    validateRefreshToken (refreshToken: string, user?: UserEntity): Promise<boolean>
+    validateRefreshToken(refreshToken: string, user?: UserEntity): Promise<boolean>;
   }
 
   namespace Login {
@@ -21,7 +21,7 @@ export declare namespace Auth {
       password: string;
     }
 
-    type Request = RequestExpress<null, null, Body>
+    type Request = RequestExpress<null, null, Body>;
   }
 
   namespace Refresh {
@@ -30,6 +30,6 @@ export declare namespace Auth {
       refreshToken: string;
     }
 
-    type Request = RequestExpress<null, null, Body>
+    type Request = RequestExpress<null, null, Body>;
   }
 }

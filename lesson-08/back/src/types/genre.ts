@@ -1,21 +1,32 @@
-import { Request as RequestExpress } from 'express'
-import { DeepPartial } from 'typeorm'
-import { GenreEntity } from '../entity/GenreEntity'
-import { App } from './app'
+import { Request as RequestExpress } from "express";
+import { DeepPartial } from "typeorm";
+import { GenreEntity } from "../entity/GenreEntity";
+import { App } from "./app";
+import { LanguageEntity } from "../entity/LanguageEntity";
 
 export declare namespace Genre {
   interface Repository {
-    getAll (): Promise<GenreEntity[]>
+    getAll(): Promise<GenreEntity[]>;
 
-    getById (genreId: number | string): Promise<GenreEntity | undefined>
+    getById(genreId: number | string): Promise<GenreEntity | undefined>;
 
-    create (genreData: DeepPartial<GenreEntity>): Promise<GenreEntity>
+    create(genreData: DeepPartial<GenreEntity>): Promise<GenreEntity>;
 
-    update (genreId: number | string, genreData: DeepPartial<GenreEntity>): Promise<GenreEntity>
+    update(genreId: number | string, genreData: DeepPartial<GenreEntity>): Promise<GenreEntity>;
 
-    delete (genre: GenreEntity): Promise<void>
+    delete(genre: GenreEntity): Promise<void>;
 
-    hasExist (name: string): Promise<boolean>
+    search(value: string): Promise<GenreEntity[]>;
+
+    hasExist(name: string): Promise<boolean>;
+  }
+
+  namespace List {
+    interface Query {
+      search?: string;
+    }
+
+    type Request = RequestExpress<null, null, null, Query & App.ParsedQs>;
   }
 
   namespace Create {
@@ -23,7 +34,7 @@ export declare namespace Genre {
       name: string;
     }
 
-    type Request = RequestExpress<null, null, Body>
+    type Request = RequestExpress<null, null, Body>;
   }
 
   namespace Update {
@@ -32,7 +43,7 @@ export declare namespace Genre {
       name: string;
     }
 
-    type Request = RequestExpress<null, null, Body>
+    type Request = RequestExpress<null, null, Body>;
   }
 
   namespace Delete {
@@ -40,7 +51,7 @@ export declare namespace Genre {
       id: number;
     }
 
-    type Request = RequestExpress<Params & App.ParamsDictionary, null, null>
+    type Request = RequestExpress<Params & App.ParamsDictionary, null, null>;
   }
 
   namespace Single {
@@ -48,6 +59,6 @@ export declare namespace Genre {
       id: number;
     }
 
-    type Request = RequestExpress<Params & App.ParamsDictionary, null, null>
+    type Request = RequestExpress<Params & App.ParamsDictionary, null, null>;
   }
 }

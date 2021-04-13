@@ -1,7 +1,7 @@
 import block from "bem-cn";
 import React from "react";
 import "./AuthorAllPage.css";
-import {BasePageProps} from "../../types/base";
+import { BasePageProps } from "../../types/base";
 
 interface Props extends BasePageProps {}
 

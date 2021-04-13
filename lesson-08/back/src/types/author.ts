@@ -1,26 +1,26 @@
-import { Request as RequestExpress } from 'express'
-import { DeepPartial } from 'typeorm'
-import { AuthorEntity } from '../entity/AuthorEntity'
-import { BookEntity } from '../entity/BookEntity'
-import { App } from './app'
+import { Request as RequestExpress } from "express";
+import { DeepPartial } from "typeorm";
+import { AuthorEntity } from "../entity/AuthorEntity";
+import { BookEntity } from "../entity/BookEntity";
+import { App } from "./app";
 
 export declare namespace Author {
   interface Repository {
-    getAll (): Promise<AuthorEntity[]>
+    getAll(): Promise<AuthorEntity[]>;
 
-    getByIdWithRelations (authorId: string | number): Promise<AuthorEntity | undefined>
+    getByIdWithRelations(authorId: string | number): Promise<AuthorEntity | undefined>;
 
-    getByIdList (authorIdList: Array<string | number>): Promise<AuthorEntity[]>
+    getByIdList(authorIdList: Array<string | number>): Promise<AuthorEntity[]>;
 
-    create (authorData: DeepPartial<AuthorEntity>): Promise<AuthorEntity>
+    create(authorData: DeepPartial<AuthorEntity>): Promise<AuthorEntity>;
 
-    update (authorId: number | string, authorData: DeepPartial<AuthorEntity>): Promise<AuthorEntity>
+    update(authorId: number | string, authorData: DeepPartial<AuthorEntity>): Promise<AuthorEntity>;
 
-    delete (authorId: number | string): Promise<void>
+    delete(authorId: number | string): Promise<void>;
 
-    hasExist (name: string): Promise<boolean>
+    hasExist(name: string): Promise<boolean>;
 
-    search (name: string): Promise<AuthorEntity[]>
+    search(name: string): Promise<AuthorEntity[]>;
   }
 
   namespace List {
@@ -28,7 +28,7 @@ export declare namespace Author {
       search?: string;
     }
 
-    type Request = RequestExpress<null, null, null, Query & App.ParsedQs>
+    type Request = RequestExpress<null, null, null, Query & App.ParsedQs>;
   }
 
   namespace Create {
@@ -36,7 +36,7 @@ export declare namespace Author {
       name: string;
     }
 
-    type Request = RequestExpress<null, null, Body>
+    type Request = RequestExpress<null, null, Body>;
   }
 
   namespace Update {
@@ -45,7 +45,7 @@ export declare namespace Author {
       name: string;
     }
 
-    type Request = RequestExpress<null, null, Body>
+    type Request = RequestExpress<null, null, Body>;
   }
 
   namespace Delete {
@@ -53,7 +53,7 @@ export declare namespace Author {
       id: number;
     }
 
-    type Request = RequestExpress<Params & App.ParamsDictionary, null, null>
+    type Request = RequestExpress<Params & App.ParamsDictionary, null, null>;
   }
 
   namespace Single {
@@ -61,6 +61,6 @@ export declare namespace Author {
       id: number;
     }
 
-    type Request = RequestExpress<Params & App.ParamsDictionary, null, null>
+    type Request = RequestExpress<Params & App.ParamsDictionary, null, null>;
   }
 }

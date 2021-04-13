@@ -4,7 +4,7 @@ import { MainLayout } from "../../layouts/MainLayout/MainLayout";
 import { connect, MapStateToProps } from "react-redux";
 import { checkAccessToken } from "../../utils";
 import { RootState } from "../../store/types";
-import {BaseLayoutProps, BasePageProps} from "../../types/base";
+import { BaseLayoutProps, BasePageProps } from "../../types/base";
 
 interface StateProps {
   isAuth: boolean;

@@ -2,7 +2,7 @@ import block from "bem-cn";
 import React from "react";
 import { Header } from "../../components/Header/Header";
 import "./AuthLayout.css";
-import {BaseLayoutProps} from "../../types/base";
+import { BaseLayoutProps } from "../../types/base";
 
 interface Props extends BaseLayoutProps {}
 

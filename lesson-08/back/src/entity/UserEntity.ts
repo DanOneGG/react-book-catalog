@@ -1,34 +1,34 @@
 /**
  * Пользователь
  */
-import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm'
+import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 
-@Entity('user')
+@Entity("user")
 export class UserEntity {
   @PrimaryGeneratedColumn()
-  id: number
+  id: number;
 
   @Column({ unique: true })
-  login: string
+  login: string;
 
   @Column({ unique: true })
-  email: string
+  email: string;
 
   @Column({ default: true })
-  enable: boolean
+  enable: boolean;
 
   @Column({ select: false })
-  passwordHash: string
+  passwordHash: string;
 
   @Column({ select: false, nullable: true })
-  refreshToken: string
+  refreshToken: string;
 
   @Column({ select: false, nullable: true })
-  refreshTokenExp: Date
+  refreshTokenExp: Date;
 
   @CreateDateColumn()
-  createdAt: Date
+  createdAt: Date;
 
   @UpdateDateColumn()
-  updateAt: Date
+  updateAt: Date;
 }

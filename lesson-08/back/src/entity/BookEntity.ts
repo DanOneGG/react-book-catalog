@@ -4,55 +4,57 @@
 import {
   Column,
   CreateDateColumn,
-  Entity, JoinColumn,
+  Entity,
+  JoinColumn,
   JoinTable,
   ManyToMany,
-  ManyToOne, OneToOne,
+  ManyToOne,
+  OneToOne,
   PrimaryGeneratedColumn,
-  UpdateDateColumn
-} from 'typeorm'
-import { AuthorEntity } from './AuthorEntity'
-import { FileEntity } from './FileEntity'
-import { GenreEntity } from './GenreEntity'
-import { LanguageEntity } from './LanguageEntity'
-import { PublisherEntity } from './PublisherEntity'
+  UpdateDateColumn,
+} from "typeorm";
+import { AuthorEntity } from "./AuthorEntity";
+import { FileEntity } from "./FileEntity";
+import { GenreEntity } from "./GenreEntity";
+import { LanguageEntity } from "./LanguageEntity";
+import { PublisherEntity } from "./PublisherEntity";
 
-@Entity('book')
+@Entity("book")
 export class BookEntity {
   @PrimaryGeneratedColumn()
-  id: number
+  id: number;
 
   @Column()
-  title: string
+  title: string;
 
   @Column()
-  year: number
+  year: number;
 
   @Column({ unique: true })
-  isbn: string
+  isbn: string;
 
-  @Column('text', { nullable: true })
-  description: string
+  @Column("text", { nullable: true })
+  description: string;
 
-  @ManyToOne(() => FileEntity, ({ book }) => book, { nullable: true, onDelete: 'SET NULL' })
-  image: FileEntity
+  @ManyToOne(() => FileEntity, ({ book }) => book, { nullable: true, onDelete: "SET NULL" })
+  image: FileEntity;
 
-  @ManyToOne(() => PublisherEntity, ({ books }) => books, { nullable: true, onDelete: 'SET NULL' })
-  publisher: PublisherEntity
+  @ManyToOne(() => PublisherEntity, ({ books }) => books, { nullable: true, onDelete: "SET NULL" })
+  publisher: PublisherEntity;
 
-  @ManyToOne(() => LanguageEntity, ({ books }) => books, { nullable: true, onDelete: 'SET NULL' })
-  language: LanguageEntity
+  @ManyToOne(() => LanguageEntity, ({ books }) => books, { nullable: true, onDelete: "SET NULL" })
+  language: LanguageEntity;
 
-  @ManyToOne(() => GenreEntity, ({ books }) => books, { nullable: true, onDelete: 'SET NULL' })
-  genre: GenreEntity
+  @ManyToOne(() => GenreEntity, ({ books }) => books, { nullable: true, onDelete: "SET NULL" })
+  genre: GenreEntity;
 
   @CreateDateColumn()
-  createdAt: Date
+  createdAt: Date;
 
   @UpdateDateColumn()
-  updatedAt: Date
+  updatedAt: Date;
 
   @ManyToMany(() => AuthorEntity)
-  @JoinTable({ name: 'book_author' })
-  authors: AuthorEntity[]
+  @JoinTable({ name: "book_author" })
+  authors: AuthorEntity[];
 }

@@ -1,8 +1,8 @@
 import { ApiService } from "../services/ApiService";
 import { Book } from "../types/book";
 
-export const apiBookGetAll = async (): Promise<Book.Data[]> => {
-  const { data } = await ApiService(true).get<Book.Data[]>("/books");
+export const apiBookGetAll = async (params: Book.All.Search): Promise<Book.Data[]> => {
+  const { data } = await ApiService(true).get<Book.Data[]>("/books", { params });
   return data;
 };
 

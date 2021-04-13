@@ -14,9 +14,9 @@ export const apiAuthLogin = async (params: Auth.Login.Params): Promise<App.Token
 };
 
 export const apiAuthRefresh = async (params: Auth.Refresh.Params): Promise<App.Token> => {
-  const { data } = await ApiService().post<App.Token>('/auth/refresh', params)
-  return data
-}
+  const { data } = await ApiService().post<App.Token>("/auth/refresh", params);
+  return data;
+};
 
 export const apiAuthLogout = async (): Promise<void> => {
   await ApiService(true).post<void>("/auth/logout");

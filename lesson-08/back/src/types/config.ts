@@ -1,4 +1,4 @@
-import { LogLevel } from '../enum/log-level'
+import { LogLevel } from "../enum/log-level";
 
 export declare namespace Config {
   interface Service {

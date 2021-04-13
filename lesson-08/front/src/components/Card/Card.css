@@ -16,5 +16,6 @@
     align-items: center;
   }
 
-  &__content {}
+  &__content {
+  }
 }
