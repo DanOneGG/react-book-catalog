@@ -11,7 +11,6 @@ On backend:
 - JWT
 
 On frontend:
-- React
 - Redux (+ redux-persist, redux-thunk)
 - PostCSS
 - bem-cn
